@@ -88,8 +88,9 @@ export default function OutputBox({ resultText, onReset, isComplete, onBookmark 
           <button
             onClick={() => handleCopy(mode === 'full' ? copyFull : copyCompact, mode === 'full' ? setCopied : setCopiedC)}
             disabled={!isComplete}
+            title={(copied || copiedC) ? 'Tersalin!' : 'Salin ke Clipboard'}
             className={clsx(
-              'flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+              'flex items-center justify-center w-9 h-9 rounded-xl transition-all',
               isComplete
                 ? (copied || copiedC)
                   ? 'bg-green-500 text-white'
@@ -98,8 +99,8 @@ export default function OutputBox({ resultText, onReset, isComplete, onBookmark 
             )}
           >
             {(copied && mode === 'full') || (copiedC && mode === 'compact')
-              ? <><Check size={13} /> Tersalin</>
-              : <><Copy size={13} /> Salin</>}
+              ? <Check size={18} />
+              : <Copy size={18} />}
           </button>
 
           {/* Bookmark */}
@@ -108,7 +109,7 @@ export default function OutputBox({ resultText, onReset, isComplete, onBookmark 
             disabled={!isComplete}
             title="Simpan ke Bookmark"
             className={clsx(
-              'flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+              'flex items-center justify-center w-9 h-9 rounded-xl transition-all',
               isComplete
                 ? (bookmarked || bookmarkedC)
                   ? 'bg-amber-100 text-amber-700'
@@ -117,16 +118,17 @@ export default function OutputBox({ resultText, onReset, isComplete, onBookmark 
             )}
           >
             {(bookmarked && mode === 'full') || (bookmarkedC && mode === 'compact')
-              ? <><BookmarkCheck size={13}/> Disimpan</>
-              : <><Bookmark size={13}/> Simpan</>}
+              ? <BookmarkCheck size={18}/>
+              : <Bookmark size={18}/>}
           </button>
 
           {/* Reset */}
           <button
             onClick={onReset}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            title="Ulangi / Reset"
+            className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
           >
-            <RefreshCw size={12} /> Ulangi
+            <RefreshCw size={16} />
           </button>
         </div>
       </div>

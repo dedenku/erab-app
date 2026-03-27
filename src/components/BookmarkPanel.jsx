@@ -28,9 +28,10 @@ export default function BookmarkPanel({ bookmarks, onRemove, onClear }) {
         </button>
         <button
           onClick={onClear}
-          className="text-xs text-amber-600 hover:text-red-600 transition-colors flex items-center gap-1"
+          title="Hapus semua bookmark"
+          className="w-8 h-8 flex items-center justify-center rounded-lg text-amber-600 hover:text-red-600 hover:bg-amber-100/50 transition-all"
         >
-          <BookmarkX size={13} /> Hapus semua
+          <BookmarkX size={16} />
         </button>
       </div>
 

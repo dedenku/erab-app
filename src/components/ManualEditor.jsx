@@ -119,9 +119,10 @@ export default function ManualEditor() {
             </button>
             <button
               onClick={() => setEditText('')}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200"
+              title="Bersihkan / Reset"
+              className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
             >
-              <RotateCcw size={12} /> Bersihkan
+              <RotateCcw size={14} />
             </button>
           </div>
         </div>
@@ -158,28 +159,30 @@ export default function ManualEditor() {
           dir="rtl"
           rows={4}
           className="w-full border border-slate-200 rounded-xl py-3 px-4 text-xl font-arabic leading-loose focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all resize-none bg-slate-50 placeholder:text-slate-300"
-          placeholder="...اختر قالباً من فوق أو اكتب نصك هنا"
+          placeholder="...اختر قالباً من فوق atau tulis teksmu di sini"
           value={editText}
           onChange={e => setEditText(e.target.value)}
         />
       </div>
 
       {/* Copy Button */}
-      <button
-        onClick={handleCopy}
-        disabled={!editText.trim()}
-        className={clsx(
-          'w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all',
-          editText.trim()
-            ? copied
-              ? 'bg-green-500 text-white'
-              : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-100'
-            : 'bg-slate-100 text-slate-400 cursor-not-allowed'
-        )}
-      >
-        <Copy size={16} />
-        {copied ? 'Tersalin! ✓' : 'Salin ke Clipboard'}
-      </button>
+      <div className="flex justify-center mt-2">
+        <button
+          onClick={handleCopy}
+          disabled={!editText.trim()}
+          title={copied ? 'Tersalin!' : 'Salin ke Clipboard'}
+          className={clsx(
+            'w-12 h-12 flex items-center justify-center rounded-2xl transition-all shadow-md',
+            editText.trim()
+              ? copied
+                ? 'bg-green-500 text-white'
+                : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+              : 'bg-slate-100 text-slate-400 cursor-not-allowed shadow-none'
+          )}
+        >
+          {copied ? <Check size={20} /> : <Copy size={20} />}
+        </button>
+      </div>
     </div>
   );
 }
