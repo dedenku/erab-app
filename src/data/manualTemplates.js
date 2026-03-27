@@ -1,0 +1,200 @@
+// Manual Templates — Potongan kalimat i'rab siap pakai untuk kasus-kasus khusus
+// yang sulit / tidak umum untuk di-generate otomatis.
+// User bisa memilih template, lalu mengedit teks arabnya secara bebas.
+
+export const templateCategories = [
+  { value: 'isim_khusus', label: '📚 Isim — Kasus Khusus' },
+  { value: 'fiil_khusus', label: '📚 Fi\'il — Kasus Khusus' },
+  { value: 'jumlah',      label: '📜 Jumlah (Kalimat) dalam Mahall' },
+  { value: 'tarkib',      label: '🔗 Tarkib (Susunan Khusus)' },
+  { value: 'la_nafiyah',  label: '🚫 Laa Nafiyah Lil-Jins' },
+];
+
+export const manualTemplates = [
+  // ─── Isim Khusus ──────────────────────────────────────────────────────────
+  {
+    id: 'isim_maqshur_rafa',
+    category: 'isim_khusus',
+    title: "Isim Maqshur — Marfu'",
+    hint: "Contoh: الهُدَى، المُصْطَفَى",
+    text: 'مبتدأ مرفوع وعلامة رفعه الضمة المقدرة على الألف منع من ظهورها التعذر.',
+  },
+  {
+    id: 'isim_manqus_rafa',
+    category: 'isim_khusus',
+    title: "Isim Manqus — Marfu'",
+    hint: "Contoh: القَاضِي، الدَّاعِي",
+    text: 'مبتدأ مرفوع وعلامة رفعه الضمة المقدرة على الياء منع من ظهورها الثقل.',
+  },
+  {
+    id: 'isim_ghairu_munsharif_jar',
+    category: 'isim_khusus',
+    title: "Isim Ghairu Munsharif — Majrur (bil Fathah)",
+    hint: "Contoh: إبراهيم، مساجد، أحمد",
+    text: 'مضاف إليه مجرور وعلامة جره الفتحة نيابةً عن الكسرة لأنه اسم لا ينصرف.',
+  },
+  {
+    id: 'mudhaf_mudhaf_ilaih',
+    category: 'isim_khusus',
+    title: "Mudhaf + Mudhaf Ilaih",
+    hint: "Contoh: كِتَابُ اللهِ",
+    text: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره، وهو مضاف. [مضاف إليه] مضاف إليه مجرور وعلامة جره الكسرة الظاهرة على آخره.',
+  },
+  {
+    id: 'naat_man_ut',
+    category: 'isim_khusus',
+    title: "Na'at + Man'ut",
+    hint: "Contoh: رَجُلٌ صَالِحٌ",
+    text: '[المنعوت] نعت مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',
+  },
+  {
+    id: 'munada_mufrad_alama',
+    category: 'isim_khusus',
+    title: "Munada Mufrad Alam",
+    hint: "Contoh: يَا مُحَمَّدُ",
+    text: 'منادى مبني على الضم في محل نصب.',
+  },
+  {
+    id: 'munada_nakirah_maqsudah',
+    category: 'isim_khusus',
+    title: "Munada Nakirah Maqsudah",
+    hint: "Contoh: يَا رَجُلُ",
+    text: 'منادى مفرد نكرة مقصودة مبني على الضم في محل نصب.',
+  },
+  {
+    id: 'munada_mudhaf',
+    category: 'isim_khusus',
+    title: "Munada Mudhaf",
+    hint: "Contoh: يَا عَبْدَ اللهِ",
+    text: 'منادى منصوب وعلامة نصبه الفتحة الظاهرة على آخره، وهو مضاف.',
+  },
+  {
+    id: 'isim_la_mufrad',
+    category: 'la_nafiyah',
+    title: "Isim La Nafiyah (Mufrad Nakirah)",
+    hint: "Contoh: لَا رَجُلَ في الدَّارِ",
+    text: 'اسم لا مبني على الفتح في محل نصب.',
+  },
+  {
+    id: 'isim_la_mudhaf',
+    category: 'la_nafiyah',
+    title: "Isim La Nafiyah (Mudhaf)",
+    hint: "Contoh: لَا طَالِبَ عِلْمٍ كَسْلَانُ",
+    text: 'اسم لا منصوب وعلامة نصبه الفتحة الظاهرة على آخره، وهو مضاف.',
+  },
+  {
+    id: 'khabar_la',
+    category: 'la_nafiyah',
+    title: "Khabar La Nafiyah Lil-Jins",
+    hint: "Contoh: لَا رَجُلَ في الدَّارِ — khabar-nya: في الدَّارِ",
+    text: 'خبر لا مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',
+  },
+  // ─── Fi'il Khusus ─────────────────────────────────────────────────────────
+  {
+    id: 'fiil_madhi_majhul',
+    category: 'fiil_khusus',
+    title: "Fi'il Madhi Majhul",
+    hint: "Contoh: كُتِبَ، ضُرِبَ",
+    text: 'فعل ماضٍ مبني للمجهول مبني على الفتح.',
+  },
+  {
+    id: 'fiil_mudhari_muakkad_nun',
+    category: 'fiil_khusus',
+    title: "Fi'il Mudhari' + Nun Taukid",
+    hint: "Contoh: لَيَكْتُبَنَّ",
+    text: 'فعل مضارع مبني على الفتح لاتصاله بنون التوكيد الثقيلة، لا محل له من الإعراب.',
+  },
+  {
+    id: 'fiil_mudhari_majhul',
+    category: 'fiil_khusus',
+    title: "Fi'il Mudhari' Majhul",
+    hint: "Contoh: يُكْتَبُ، يُضْرَبُ",
+    text: 'فعل مضارع مبني للمجهول مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',
+  },
+  {
+    id: 'fiil_naaqis_kaana',
+    category: 'fiil_khusus',
+    title: "Fi'il Naqish (كان وأخواتها)",
+    hint: "Contoh: كَانَ زَيْدٌ قَائِمًا",
+    text: 'فعل ماضٍ ناقص مبني على الفتح.',
+  },
+  {
+    id: 'fiil_madhi_tasydid',
+    category: 'fiil_khusus',
+    title: 'Fi\'il Madhi bersambung Waw Jama\'',
+    hint: "Contoh: كَتَبُوا، ذَهَبُوا",
+    text: 'فعل ماضٍ مبني على الضم لاتصاله بواو الجماعة.',
+  },
+  // ─── Jumlah dalam Mahall ─────────────────────────────────────────────────
+  {
+    id: 'jumlah_fi_mahall_rafa_khabar',
+    category: 'jumlah',
+    title: "Jumlah Fi'liyyah — Mahall Rafa' (sebagai Khabar)",
+    hint: "Contoh: زَيْدٌ يَكْتُبُ الدَّرْسَ",
+    text: 'الجملة الفعلية في محل رفع خبر المبتدأ.',
+  },
+  {
+    id: 'jumlah_fi_mahall_nashab_haal',
+    category: 'jumlah',
+    title: "Jumlah Fi'liyyah — Mahall Nashab (sebagai Haal)",
+    hint: "Contoh: جَاءَ زَيْدٌ يَضْحَكُ",
+    text: 'الجملة الفعلية في محل نصب حال.',
+  },
+  {
+    id: 'jumlah_ismiyyah_mahall_jar',
+    category: 'jumlah',
+    title: "Jumlah Ismiyyah — Mahall Jar (setelah Huruf Jar)",
+    hint: "Contoh: عَجِبْتُ مِمَّا أَنْتَ فِيهِ",
+    text: 'الجملة الاسمية في محل جر مضاف إليه.',
+  },
+  {
+    id: 'silah_maushul',
+    category: 'jumlah',
+    title: "Silah Maushul (Jumlah setelah Isim Maushul)",
+    hint: "Contoh: جَاءَ الَّذِي يَكْتُبُ",
+    text: 'الجملة الفعلية صلة الموصول لا محل لها من الإعراب.',
+  },
+  // ─── Tarkib Khusus ────────────────────────────────────────────────────────
+  {
+    id: 'dhamir_ha_muttasil_jar',
+    category: 'tarkib',
+    title: "Dhamir Ha' sebagai Mudhaf Ilaih",
+    hint: "Contoh: رَبِّهِ — الضمير Ha' kembali ke...",
+    text: "ضمير متصل مبني على الكسر في محل جر مضاف إليه.",
+  },
+  {
+    id: 'dhamir_hu_muttasil_nashab',
+    category: 'tarkib',
+    title: "Dhamir Hu sebagai Maf'ul Bih",
+    hint: "Contoh: رَأَيْتُهُ",
+    text: "ضمير متصل مبني على الضم في محل نصب مفعول به.",
+  },
+  {
+    id: 'dhamir_mustatir_wujuban',
+    category: 'tarkib',
+    title: "Dhamir Mustatir Wujuban (pada Fi'il)",
+    hint: "Contoh: اكْتُبْ (fa'il-nya: أنت)",
+    text: "فاعله ضمير مستتر وجوباً تقديره أنت.",
+  },
+  {
+    id: 'dhamir_mustatir_jawazan',
+    category: 'tarkib',
+    title: "Dhamir Mustatir Jawazan (pada Fi'il Madhi)",
+    hint: "Contoh: كَتَبَ — fa'il-nya: هو",
+    text: "فاعله ضمير مستتر جوازاً تقديره هو.",
+  },
+  {
+    id: 'jar_majrur_khabar',
+    category: 'tarkib',
+    title: "Jar + Majrur sebagai Khabar (Syibhul Jumlah)",
+    hint: "Contoh: زَيْدٌ في البَيْتِ",
+    text: "جار ومجرور متعلقان بمحذوف خبر المبتدأ.",
+  },
+  {
+    id: 'zharaf_khabar',
+    category: 'tarkib',
+    title: "Zharaf Makan / Zaman sebagai Khabar",
+    hint: "Contoh: زَيْدٌ عِنْدَكَ",
+    text: "ظرف مكان منصوب وعلامة نصبه الفتحة الظاهرة، متعلق بمحذوف خبر المبتدأ.",
+  },
+];
