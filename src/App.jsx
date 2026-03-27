@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IrabBuilder from './components/IrabBuilder';
 import ManualEditor from './components/ManualEditor';
+import BookmarkPanel from './components/BookmarkPanel';
+import Studio from './components/Studio';
+import { useBookmarks } from './hooks/useBookmarks';
 import { clsx } from 'clsx';
-import { Cpu, FileEdit } from 'lucide-react';
+import { Cpu, FileEdit, Heart } from 'lucide-react';
 
 const tabs = [
   { id: 'auto',   label: "I'rab Otomatis", icon: Cpu,      desc: "Susun i'rab langkah demi langkah lewat dropdown kondisional." },
@@ -11,6 +14,28 @@ const tabs = [
 
 function App() {
   const [activeTab, setActiveTab] = useState('auto');
+  const [showStudio, setShowStudio] = useState(window.location.pathname === '/studio');
+  const { bookmarks, save, remove, clear } = useBookmarks();
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setShowStudio(window.location.pathname === '/studio');
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  if (showStudio) {
+    return <Studio />;
+  }
+
+  const handleSaveBookmark = (text) => {
+    save({
+      id: Date.now().toString(),
+      text,
+      timestamp: new Date().toISOString()
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-100 flex flex-col items-center justify-start py-8 px-4 sm:py-12">
@@ -66,15 +91,39 @@ function App() {
 
           {/* Tab Content */}
           <div className="px-4 sm:px-6 pb-6 pt-2">
-            {activeTab === 'auto'   && <IrabBuilder />}
+            {activeTab === 'auto'   && <IrabBuilder onBookmark={handleSaveBookmark} />}
             {activeTab === 'manual' && <ManualEditor />}
           </div>
         </div>
 
+        {/* Bookmark Panel */}
+        {activeTab === 'auto' && (
+          <BookmarkPanel 
+            bookmarks={bookmarks} 
+            onRemove={remove} 
+            onClear={clear} 
+          />
+        )}
+
         {/* Footer */}
-        <p className="text-center text-slate-400 text-xs mt-5">
-          Erab · Based on standard Arabic Nahwu rules · v2
-        </p>
+        <footer className="mt-12 pb-8 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="h-px w-8 bg-slate-200" />
+            <span className="text-emerald-600 font-arabic font-bold text-lg">إع</span>
+            <div className="h-px w-8 bg-slate-200" />
+          </div>
+          <p className="text-slate-500 text-sm font-semibold">
+            Erab <span className="text-slate-300 font-normal mx-1">|</span> Penyusun I'rab Digital
+          </p>
+          <div className="flex items-center justify-center gap-1.5 mt-2 text-slate-400 text-xs">
+            <span>Dibuat dengan</span>
+            <Heart size={10} className="text-red-400 fill-current" />
+            <span>berdasarkan kaidah Nahwu baku</span>
+          </div>
+          <p className="text-slate-300 text-[10px] uppercase tracking-widest mt-4 mt-6">
+            &copy; {new Date().getFullYear()} Erab Tool
+          </p>
+        </footer>
       </div>
     </div>
   );

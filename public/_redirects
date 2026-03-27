@@ -1,0 +1,3 @@
+# SPA Routing — redirect semua path ke index.html
+# Diperlukan agar React Router (jika dipakai) atau refresh halaman tidak 404
+/*    /index.html   200

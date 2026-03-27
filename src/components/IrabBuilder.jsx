@@ -2,6 +2,14 @@ import React, { useState, useMemo, useCallback } from 'react';
 import DropdownStep from './DropdownStep';
 import OutputBox from './OutputBox';
 import {
+  buildIsimMurabText,
+  buildIsimMabniText,
+  buildFiilMadhiText,
+  buildFiilAmrText,
+  buildFiilMudhariText,
+  buildHurufText
+} from '../utils/irabEngine';
+import {
   wordTypes,
   isimCategories,
   fiilCategories,
@@ -17,53 +25,9 @@ import {
   fiilAmrMabniOptions,
 } from '../data/irabData';
 
-// ─── Arabic Sentence Builders ─────────────────────────────────────────────────
-
-function buildIsimMurabText(kedudukan, irabType, sign, reason) {
-  if (!kedudukan || !irabType || !sign || !reason) return null;
-  const harakat = irabType.value === 'rafa' ? irabType.harakat
-    : irabType.value === 'nashab' ? irabType.harakat
-    : irabType.value === 'jar'   ? irabType.harakat
-    : irabType.harakat;
-  const rsn = reasons[reason.value]?.arabic ?? '';
-  // Template: [kedudukan] [irab] وعلامة [rafa_harf] [tanda] [alasan].
-  return `${kedudukan.arabic} ${irabType.arabic} وعلامة ${harakat} ${sign.arabic} ${rsn}.`;
-}
-
-function buildIsimMabniText(jenisMabni, mabniSign, mahal) {
-  if (!jenisMabni || !mabniSign || !mahal) return null;
-  const la_mahal = mahal.value === 'la_mahal';
-  if (la_mahal) {
-    return `${jenisMabni.arabic} مبني على ${mabniSign.arabic} لا محل له من الإعراب.`;
-  }
-  return `${jenisMabni.arabic} مبني على ${mabniSign.arabic} ${mahal.arabic}.`;
-}
-
-function buildFiilMadhiText(mabniSign) {
-  if (!mabniSign) return null;
-  return `فعل ماضٍ مبني على ${mabniSign.arabic}.`;
-}
-
-function buildFiilAmrText(mabniSign) {
-  if (!mabniSign) return null;
-  return `فعل أمر مبني على ${mabniSign.arabic}.`;
-}
-
-function buildFiilMudhariText(irabType, sign, reason) {
-  if (!irabType || !sign || !reason) return null;
-  const harakat = irabType.harakat;
-  const rsn = reasons[reason.value]?.arabic ?? '';
-  return `فعل مضارع ${irabType.arabic} وعلامة ${harakat} ${sign.arabic} ${rsn}.`;
-}
-
-function buildHurufText(category, mabniSign) {
-  if (!category || !mabniSign) return null;
-  return `حرف ${category.arabic} مبني على ${mabniSign.arabic} لا محل له من الإعراب.`;
-}
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function IrabBuilder() {
+export default function IrabBuilder({ onBookmark }) {
   const [wordText,  setWordText]  = useState('');
   const [wordType,  setWordType]  = useState(null);
   const [category,  setCategory]  = useState(null);
@@ -329,7 +293,7 @@ export default function IrabBuilder() {
         )}
       </div>
 
-      <OutputBox resultText={resultText} onReset={handleReset} isComplete={!!resultText} />
+      <OutputBox resultText={resultText} onReset={handleReset} isComplete={!!resultText} onBookmark={onBookmark} />
     </div>
   );
 }
