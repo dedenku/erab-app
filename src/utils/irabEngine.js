@@ -1,10 +1,14 @@
 import { reasons } from '../data/irabData';
 
+// harakatOverride: beberapa sign punya gender khusus (mis. JMS → رَفْعِهَا bukan رَفْعِهِ)
+// Engine mendukung penulisan harakat feminin ketika sign menetapkan harakatOverride.
+
 export function buildIsimMurabText(kedudukan, irabType, sign, reason) {
   if (!kedudukan || !irabType || !sign || !reason) return null;
-  const harakat = irabType.harakat; // Always use the harakat property from the type
+  // Gunakan harakatOverride jika ada (misal: Jama' Muannats Salim → رَفْعِهَا)
+  const harakat = sign.harakatOverride ?? irabType.harakat;
   const rsn = reasons[reason.value]?.arabic ?? '';
-  // Template: [kedudukan] [irab] وَعَلَامَةُ [rafa_harf] [tanda] [alasan].
+  // Template: [kedudukan] [irab] وَعَلَامَةُ [harakat] [tanda] [alasan].
   return `${kedudukan.arabic} ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic} ${rsn}.`;
 }
 
@@ -29,7 +33,8 @@ export function buildFiilAmrText(mabniSign) {
 
 export function buildFiilMudhariText(irabType, sign, reason) {
   if (!irabType || !sign || !reason) return null;
-  const harakat = irabType.harakat;
+  // Fi'il Mudhari' tidak punya kasus gender, tapi tetap dukung harakatOverride untuk konsistensi
+  const harakat = sign.harakatOverride ?? irabType.harakat;
   const rsn = reasons[reason.value]?.arabic ?? '';
   return `فِعْلٌ مُضَارِعٌ ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic} ${rsn}.`;
 }
