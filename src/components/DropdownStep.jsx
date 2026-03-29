@@ -37,6 +37,7 @@ export default function DropdownStep({ label, options, value, onChange, placehol
         onChange={onChange}
         placeholder={placeholder || 'Pilih...'}
         isDisabled={isDisabled}
+        isSearchable={false}
         className="text-base"
         isClearable
       />
