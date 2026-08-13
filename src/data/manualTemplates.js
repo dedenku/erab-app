@@ -78,6 +78,14 @@ export const manualTemplates = [
     hint: "Contoh: الْمُسْلِمِينَ (nashab & jar sama)",
     text: 'مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الْيَاءُ نِيَابَةً عَنِ الْفَتْحَةِ لِأَنَّهُ جَمْعٌ مُذَكَّرٌ سَالِمٌ.',
   },
+  // ─── Jama' Mu'annats Salim ───────────────────────────────────────────────────
+  {
+    id: 'jms_muannats_nashab',
+    category: 'isim_khusus',
+    title: "Jama' Mu'annats Salim — Manshub (dengan Kasrah)",
+    hint: "Contoh: رَأَيْتُ الْمُسْلِمَاتِ، الطَّالِبَاتِ",
+    text: 'مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الْكَسْرَةُ نِيَابَةً عَنِ الْفَتْحَةِ لِأَنَّهُ جَمْعٌ مُؤَنَّثٌ سَالِمٌ.',
+  },
   // ─── Asmaul Khamsah ──────────────────────────────────────────────────────────
   {
     id: 'asmaul_khamsah_rafa',

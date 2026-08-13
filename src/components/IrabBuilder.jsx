@@ -38,6 +38,10 @@ export default function IrabBuilder({ onBookmark }) {
   const [mabniSign, setMabniSign] = useState(null);
   const [mahal,     setMahal]     = useState(null);
 
+  // New states for v2 rules: Mode & Depth
+  const [explanationMode, setExplanationMode] = useState('formal'); // 'formal' (Akademis) | 'pedagogical' (Pemula)
+  const [depth, setDepth]                     = useState('full');   // 'full' (Lengkap) | 'medium' (Sedang) | 'short' (Singkat)
+
   // ── Computed option lists ──────────────────────────────────────────────────
   const categoryOptions = useMemo(() => {
     if (!wordType) return [];
@@ -132,21 +136,21 @@ export default function IrabBuilder({ onBookmark }) {
 
     if (wordType?.value === 'isim') {
       if (category?.value === 'murab') {
-        body = buildIsimMurabText(kedudukan, irabType, sign, reason);
+        body = buildIsimMurabText(kedudukan, irabType, sign, reason, explanationMode, depth);
       } else if (category?.value === 'mabni') {
-        body = buildIsimMabniText(kedudukan, mabniSign, mahal);
+        body = buildIsimMabniText(kedudukan, mabniSign, mahal, explanationMode, depth);
       }
     } else if (wordType?.value === 'fiil') {
-      if (category?.value === 'madhi') body = buildFiilMadhiText(mabniSign);
-      else if (category?.value === 'amr')  body = buildFiilAmrText(mabniSign);
-      else if (category?.value === 'mudhari') body = buildFiilMudhariText(irabType, sign, reason);
+      if (category?.value === 'madhi') body = buildFiilMadhiText(mabniSign, explanationMode, depth);
+      else if (category?.value === 'amr')  body = buildFiilAmrText(mabniSign, explanationMode, depth);
+      else if (category?.value === 'mudhari') body = buildFiilMudhariText(irabType, sign, reason, explanationMode, depth);
     } else if (wordType?.value === 'huruf') {
-      body = buildHurufText(category, mabniSign);
+      body = buildHurufText(category, mabniSign, explanationMode, depth);
     }
 
     if (!body) return null;
     return wordText ? `${wordText} : ${body}` : body;
-  }, [wordText, wordType, category, kedudukan, irabType, sign, reason, mabniSign, mahal]);
+  }, [wordText, wordType, category, kedudukan, irabType, sign, reason, mabniSign, mahal, explanationMode, depth]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
   const showKedudukan = wordType?.value === 'isim' && category;
@@ -293,7 +297,16 @@ export default function IrabBuilder({ onBookmark }) {
         )}
       </div>
 
-      <OutputBox resultText={resultText} onReset={handleReset} isComplete={!!resultText} onBookmark={onBookmark} />
+      <OutputBox
+        resultText={resultText}
+        onReset={handleReset}
+        isComplete={!!resultText}
+        onBookmark={onBookmark}
+        explanationMode={explanationMode}
+        setExplanationMode={setExplanationMode}
+        depth={depth}
+        setDepth={setDepth}
+      />
     </div>
   );
 }
