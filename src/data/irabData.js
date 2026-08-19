@@ -56,7 +56,7 @@ export const mabniSigns = [
 // ─── Mahal I'rab (untuk Mabni) ────────────────────────────────────────────────
 export const mahalIrab = [
   // Rafa'
-  { value: 'rafa_mubtada',         arabic: 'فِي مَحَلِّ رَفْعٍ مُبْتَدَأٌ',              label: "Rafa' - Mubtada'" },
+  { value: 'rafa_mubtada',          arabic: 'فِي مَحَلِّ رَفْعٍ مُبْتَدَأٌ',              label: "Rafa' - Mubtada'" },
   { value: 'rafa_mubtada_muakhkhar',arabic: 'فِي مَحَلِّ رَفْعٍ مُبْتَدَأٌ مُؤَخَّرٌ',   label: "Rafa' - Mubtada' Muakhkhar" },
   { value: 'rafa_fail',             arabic: 'فِي مَحَلِّ رَفْعٍ فَاعِلٌ',                label: "Rafa' - Fa'il" },
   { value: 'rafa_naib_fail',        arabic: 'فِي مَحَلِّ رَفْعٍ نَائِبُ الْفَاعِلِ',     label: "Rafa' - Naibul Fa'il" },
@@ -70,6 +70,7 @@ export const mahalIrab = [
   { value: 'nashab_maful_mutlaq',   arabic: 'فِي مَحَلِّ نَصْبٍ مَفْعُولٌ مُطْلَقٌ',     label: "Nashab - Maf'ul Mutlaq" },
   { value: 'nashab_maful_fih',      arabic: 'فِي مَحَلِّ نَصْبٍ مَفْعُولٌ فِيهِ',        label: "Nashab - Maf'ul Fih (Zharaf)" },
   { value: 'nashab_maful_lajlih',   arabic: 'فِي مَحَلِّ نَصْبٍ مَفْعُولٌ لِأَجْلِهِ',  label: "Nashab - Maf'ul Liajlih" },
+  { value: 'nashab_maful_maah',     arabic: 'فِي مَحَلِّ نَصْبٍ مَفْعُولٌ مَعَهُ',       label: "Nashab - Maf'ul Ma'ah" },
   { value: 'nashab_isim_inna',      arabic: 'فِي مَحَلِّ نَصْبٍ اسْمُ إِنَّ',            label: 'Nashab - Isim Inna' },
   { value: 'nashab_isim_la',        arabic: 'فِي مَحَلِّ نَصْبٍ اسْمُ لَا',             label: 'Nashab - Isim La Nafiyah' },
   { value: 'nashab_khabar_kana',    arabic: 'فِي مَحَلِّ نَصْبٍ خَبَرُ كَانَ',           label: 'Nashab - Khabar Kana' },
@@ -79,66 +80,66 @@ export const mahalIrab = [
   { value: 'nashab_munada',         arabic: 'فِي مَحَلِّ نَصْبٍ مُنَادًى',              label: 'Nashab - Munada' },
   // Jar & Jazm
   { value: 'jar_jar',               arabic: 'فِي مَحَلِّ جَرٍّ',                         label: 'Jar - Majrur' },
+  { value: 'jar_mudhaf_ilaih',      arabic: 'فِي مَحَلِّ جَرٍّ مُضَافٌ إِلَيْهِ',        label: 'Jar - Mudhaf Ilaih' },
   { value: 'jazm',                  arabic: 'فِي مَحَلِّ جَزْمٍ',                        label: 'Jazm' },
   { value: 'la_mahal',              arabic: 'لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ',       label: 'Tidak punya mahal' },
 ];
 
-// ─── Peran Isim Mu'rab dalam Kalimat ─────────────────────────────────────────
+// ─── Peran Isim Mu'rab dalam Kalimat (dengan Amil Baku Turats) ────────────────
 export const isimMurabRoles = [
   // Rafa'
-  { value: 'mubtada',           arabic: 'مُبْتَدَأٌ',              label: "Mubtada' (مبتدأ)",                       irab: 'rafa' },
-  { value: 'mubtada_muakhkhar', arabic: 'مُبْتَدَأٌ مُؤَخَّرٌ',   label: "Mubtada' Muakhkhar (مبتدأ مؤخر)",        irab: 'rafa' },
-  { value: 'khabar',            arabic: 'خَبَرٌ',                  label: 'Khabar (خبر)',                            irab: 'rafa' },
-  { value: 'khabar_muqaddam',   arabic: 'خَبَرٌ مُقَدَّمٌ',        label: 'Khabar Muqaddam (خبر مقدم)',              irab: 'rafa' },
-  { value: 'fail',              arabic: 'فَاعِلٌ',                 label: "Fa'il (فاعل)",                            irab: 'rafa' },
-  { value: 'naibul_fail',       arabic: 'نَائِبُ الْفَاعِلِ',     label: "Naibul Fa'il (نائب الفاعل)",              irab: 'rafa' },
-  { value: 'isim_kana',         arabic: 'اسْمُ كَانَ',             label: 'Isim Kana (اسم كان وأخواتها)',            irab: 'rafa' },
-  { value: 'khabar_inna',       arabic: 'خَبَرُ إِنَّ',            label: "Khabar Inna (خبر إن وأخواتها)",           irab: 'rafa' },
-  { value: 'khabar_la',         arabic: 'خَبَرُ لَا',              label: "Khabar La Nafiyah Lil-Jins (خبر لا)",     irab: 'rafa' },
+  { value: 'mubtada',           arabic: 'مُبْتَدَأٌ',              amilArabic: 'بِالِابْتِدَاءِ',      label: "Mubtada' (مبتدأ)",                       irab: 'rafa' },
+  { value: 'mubtada_muakhkhar', arabic: 'مُبْتَدَأٌ مُؤَخَّرٌ',   amilArabic: 'بِالِابْتِدَاءِ',      label: "Mubtada' Muakhkhar (مبتدأ مؤخر)",        irab: 'rafa' },
+  { value: 'khabar',            arabic: 'خَبَرُ الْمُبْتَدَإِ',   amilArabic: 'بِالْمُبْتَدَإِ',      label: 'Khabar (خبر)',                            irab: 'rafa' },
+  { value: 'khabar_muqaddam',   arabic: 'خَبَرٌ مُقَدَّمٌ',        amilArabic: 'بِالْمُبْتَدَإِ',      label: 'Khabar Muqaddam (خبر مقدم)',              irab: 'rafa' },
+  { value: 'fail',              arabic: 'فَاعِلٌ',                 amilArabic: 'بِفِعْلِهِ',          label: "Fa'il (فاعل)",                            irab: 'rafa' },
+  { value: 'naibul_fail',       arabic: 'نَائِبُ الْفَاعِلِ',     amilArabic: 'بِفِعْلِهِ',          label: "Naibul Fa'il (نائب الفاعل)",              irab: 'rafa' },
+  { value: 'isim_kana',         arabic: 'اسْمُ كَانَ',             amilArabic: 'بِكَانَ',             label: 'Isim Kana (اسم كان وأخواتها)',            irab: 'rafa' },
+  { value: 'khabar_inna',       arabic: 'خَبَرُ إِنَّ',            amilArabic: 'بِإِنَّ',             label: "Khabar Inna (خبر إن وأخواتها)",           irab: 'rafa' },
+  { value: 'khabar_la',         arabic: 'خَبَرُ لَا',              amilArabic: 'بِلَا',               label: "Khabar La Nafiyah Lil-Jins (خبر لا)",     irab: 'rafa' },
   // Nashab
-  { value: 'maful_bih',         arabic: 'مَفْعُولٌ بِهِ',          label: "Maf'ul Bih (مفعول به)",                   irab: 'nashab' },
-  { value: 'maful_mutlaq',      arabic: 'مَفْعُولٌ مُطْلَقٌ',      label: "Maf'ul Mutlaq (مفعول مطلق)",              irab: 'nashab' },
-  { value: 'maful_fih',         arabic: 'مَفْعُولٌ فِيهِ',         label: "Maf'ul Fih / Zharaf (مفعول فيه)",        irab: 'nashab' },
-  { value: 'maful_lajlih',      arabic: 'مَفْعُولٌ لِأَجْلِهِ',   label: "Maf'ul Liajlih (مفعول لأجله)",           irab: 'nashab' },
-  { value: 'maful_maah',        arabic: 'مَفْعُولٌ مَعَهُ',        label: "Maf'ul Ma'ah (مفعول معه)",                irab: 'nashab' },
-  { value: 'haal',              arabic: 'حَالٌ',                   label: 'Haal (حال)',                               irab: 'nashab' },
-  { value: 'tamyiz',            arabic: 'تَمْيِيزٌ',               label: 'Tamyiz (تمييز)',                           irab: 'nashab' },
-  { value: 'mustatsna',         arabic: 'مُسْتَثْنًى',             label: 'Mustatsna (مستثنى)',                       irab: 'nashab' },
-  { value: 'munada',            arabic: 'مُنَادًى',                label: "Munada Mu'rab (منادى معرب)",              irab: 'nashab' },
-  { value: 'khabar_kana',       arabic: 'خَبَرُ كَانَ',            label: 'Khabar Kana (خبر كان وأخواتها)',          irab: 'nashab' },
-  { value: 'isim_inna',         arabic: 'اسْمُ إِنَّ',             label: 'Isim Inna (اسم إن وأخواتها)',             irab: 'nashab' },
-  { value: 'isim_la',           arabic: 'اسْمُ لَا',               label: "Isim La Nafiyah Mudhaf / Syibhuh (اسم لا)", irab: 'nashab' },
+  { value: 'maful_bih',         arabic: 'مَفْعُولٌ بِهِ',          amilArabic: 'بِفِعْلِهِ',          label: "Maf'ul Bih (مفعول به)",                   irab: 'nashab' },
+  { value: 'maful_mutlaq',      arabic: 'مَفْعُولٌ مُطْلَقٌ',      amilArabic: 'بِفِعْلِهِ',          label: "Maf'ul Mutlaq (مفعول مطلق)",              irab: 'nashab' },
+  { value: 'maful_fih',         arabic: 'مَفْعُولٌ فِيهِ',         amilArabic: 'بِفِعْلِهِ',          label: "Maf'ul Fih / Zharaf (مفعول فيه)",        irab: 'nashab' },
+  { value: 'maful_lajlih',      arabic: 'مَفْعُولٌ لِأَجْلِهِ',   amilArabic: 'بِفِعْلِهِ',          label: "Maf'ul Liajlih (مفعول لأجله)",           irab: 'nashab' },
+  { value: 'maful_maah',        arabic: 'مَفْعُولٌ مَعَهُ',        amilArabic: 'بِفِعْلِهِ',          label: "Maf'ul Ma'ah (مفعول معه)",                irab: 'nashab' },
+  { value: 'haal',              arabic: 'حَالٌ',                   amilArabic: 'بِفِعْلِهِ',          label: 'Haal (حال)',                               irab: 'nashab' },
+  { value: 'tamyiz',            arabic: 'تَمْيِيزٌ',               amilArabic: 'بِفِعْلِهِ',          label: 'Tamyiz (تمييز)',                           irab: 'nashab' },
+  { value: 'mustatsna',         arabic: 'مُسْتَثْنًى',             amilArabic: 'بِإِلَّا',             label: 'Mustatsna (مستثنى)',                       irab: 'nashab' },
+  { value: 'munada',            arabic: 'مُنَادًى',                amilArabic: 'بِحَرْفِ النِّدَاءِ', label: "Munada Mu'rab (منادى معرب)",              irab: 'nashab' },
+  { value: 'khabar_kana',       arabic: 'خَبَرُ كَانَ',            amilArabic: 'بِكَانَ',             label: 'Khabar Kana (خبر كان وأخواتها)',          irab: 'nashab' },
+  { value: 'isim_inna',         arabic: 'اسْمُ إِنَّ',             amilArabic: 'بِإِنَّ',             label: 'Isim Inna (اسم إن وأخواتها)',             irab: 'nashab' },
+  { value: 'isim_la',           arabic: 'اسْمُ لَا',               amilArabic: 'بِلَا',               label: "Isim La Nafiyah Mudhaf / Syibhuh (اسم لا)", irab: 'nashab' },
   // Jar
-  { value: 'majrur_jar',        arabic: 'مَجْرُورٌ',               label: "Majrur bil Harfil Jar (مجرور بحرف الجر)",  irab: 'jar' },
-  { value: 'mudhaf_ilaih',      arabic: 'مُضَافٌ إِلَيْهِ',        label: 'Mudhaf Ilaih (مضاف إليه)',                irab: 'jar' },
+  { value: 'majrur_jar',        arabic: 'اسْمٌ',                   amilArabic: 'بِحَرْفِ الْجَرِّ',    label: "Majrur bil Harfil Jar (اسم مجرور بحرف الجر)",  irab: 'jar' },
+  { value: 'mudhaf_ilaih',      arabic: 'مُضَافٌ إِلَيْهِ',        amilArabic: 'بِالْمُضَافِ',        label: 'Mudhaf Ilaih (مضاف إليه)',                irab: 'jar' },
   // Tabi' (bisa semua i'rab)
-  { value: 'naat',              arabic: 'نَعْتٌ',                  label: "Na'at / Sifat (نعت)",                     irab: 'all' },
-  { value: 'athaf',             arabic: 'مَعْطُوفٌ',               label: "Ma'thuf (معطوف)",                          irab: 'all' },
-  { value: 'taukid',            arabic: 'تَوْكِيدٌ',               label: 'Taukid (توكيد)',                           irab: 'all' },
-  { value: 'badal',             arabic: 'بَدَلٌ',                  label: 'Badal (بدل)',                              irab: 'all' },
+  { value: 'naat',              arabic: 'نَعْتٌ',                  amilArabic: 'لِلْمَنْعُوتِ',       label: "Na'at / Sifat (نعت)",                     irab: 'all' },
+  { value: 'athaf',             arabic: 'مَعْطُوفٌ',               amilArabic: 'عَلَى الْمَتْبُوعِ',  label: "Ma'thuf (معطوف)",                          irab: 'all' },
+  { value: 'taukid',            arabic: 'تَوْكِيدٌ',               amilArabic: 'لِلْمُؤَكَّدِ',       label: 'Taukid (توكيد)',                           irab: 'all' },
+  { value: 'badal',             arabic: 'بَدَلٌ',                  amilArabic: 'مِنَ الْمُبْدَلِ مِنْهُ', label: 'Badal (بدل)',                              irab: 'all' },
 ];
 
 // ─── Jenis Isim Mabni ─────────────────────────────────────────────────────────
 export const isimMabniTypes = [
-  { value: 'dhamir_munfasil', arabic: 'ضَمِيرٌ مُنْفَصِلٌ',   label: 'Dhamir Munfasil (ضمير منفصل)' },
-  { value: 'dhamir_muttasil', arabic: 'ضَمِيرٌ مُتَّصِلٌ',   label: 'Dhamir Muttasil (ضمير متصل)' },
-  { value: 'dhamir_mustatir', arabic: 'ضَمِيرٌ مُسْتَتِرٌ',   label: 'Dhamir Mustatir (ضمير مستتر)' },
-  { value: 'isim_isyarah',    arabic: 'اسْمُ إِشَارَةٍ',      label: 'Isim Isyarah (اسم إشارة)' },
-  { value: 'isim_maushul',    arabic: 'اسْمٌ مَوْصُولٌ',      label: 'Isim Maushul (اسم موصول)' },
-  { value: 'isim_istifham',   arabic: 'اسْمُ اسْتِفْهَامٍ',  label: 'Isim Istifham (اسم استفهام)' },
-  { value: 'isim_syarat',     arabic: 'اسْمُ شَرْطٍ',         label: 'Isim Syarat (اسم شرط)' },
-  { value: 'isim_la',         arabic: 'اسْمُ لَا',             label: 'Isim La Nafiyah Lil-Jins (اسم لا)' },
+  { value: 'dhamir_munfasil', arabic: 'ضَمِيرٌ بَارِزٌ مُنْفَصِلٌ',   label: 'Dhamir Munfasil (ضمير منفصل)' },
+  { value: 'dhamir_muttasil', arabic: 'ضَمِيرٌ بَارِزٌ مُتَّصِلٌ',   label: 'Dhamir Muttasil (ضمير متصل)' },
+  { value: 'dhamir_mustatir', arabic: 'ضَمِيرٌ مُسْتَتِرٌ',           label: 'Dhamir Mustatir (ضمير مستتر)' },
+  { value: 'isim_isyarah',    arabic: 'اسْمُ إِشَارَةٍ',              label: 'Isim Isyarah (اسم إشارة)' },
+  { value: 'isim_maushul',    arabic: 'اسْمٌ مَوْصُولٌ',              label: 'Isim Maushul (اسم موصول)' },
+  { value: 'isim_istifham',   arabic: 'اسْمُ اسْتِفْهَامٍ',          label: 'Isim Istifham (اسم استفهام)' },
+  { value: 'isim_syarat',     arabic: 'اسْمُ شَرْطٍ جَازِمٌ',         label: 'Isim Syarat (اسم شرط)' },
+  { value: 'isim_la',         arabic: 'اسْمُ لَا النَّافِيَةِ لِلْجِنْسِ', label: 'Isim La Nafiyah Lil-Jins (اسم لا)' },
 ];
 
 // ─── Tanda I'rab per Jenis I'rab ─────────────────────────────────────────────
-// signCategory: zahirah | muqaddarah | niyabah
 export const signsByIrab = {
   rafa: [
     {
       value: 'dhammah_zahirah',
-      label: 'Dhammah Zahirah — الضمة الظاهرة',
-      arabic: 'الضَّمَّةُ الظَّاهِرَةُ عَلَى آخِرِهِ',
-      shortArabic: 'بِالضَّمَّةِ',
+      label: 'Dhammah Zahirah — ضمة ظاهرة في آخره',
+      arabic: 'ضَمَّةٌ ظَاهِرَةٌ فِي آخِرِهِ',
+      shortArabic: 'بِالضَّمَّةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       reasons: ['isim_mufrad', 'jama_taksir', 'fiil_mudhari_shahih'],
@@ -190,9 +191,9 @@ export const signsByIrab = {
     },
     {
       value: 'dhammah_jama_muannats',
-      label: "Dhammah Zahirah — الضمة (Jama' Muannats Salim)",
-      arabic: 'الضَّمَّةُ الظَّاهِرَةُ عَلَى آخِرِهَا',
-      shortArabic: 'بِالضَّمَّةِ',
+      label: "Dhammah Zahirah — ضمة ظاهرة في آخرها (Jama' Muannats)",
+      arabic: 'ضَمَّةٌ ظَاهِرَةٌ فِي آخِرِهَا',
+      shortArabic: 'بِالضَّمَّةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       harakatOverride: 'رَفْعِهَا',
@@ -211,25 +212,25 @@ export const signsByIrab = {
   nashab: [
     {
       value: 'fathah_zahirah',
-      label: 'Fathah Zahirah — الفتحة الظاهرة على آخره',
-      arabic: 'الْفَتْحَةُ الظَّاهِرَةُ عَلَى آخِرِهِ',
-      shortArabic: 'بِالْفَتْحَةِ',
+      label: 'Fathah Zahirah — فتحة ظاهرة في آخره',
+      arabic: 'فَتْحَةٌ ظَاهِرَةٌ فِي آخِرِهِ',
+      shortArabic: 'بِالْفَتْحَةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       reasons: ['isim_mufrad', 'jama_taksir', 'fiil_mudhari_shahih', 'ghairu_munsharif'],
     },
     {
       value: 'fathah_zahirah_manqus',
-      label: "Fathah Zahirah (Manqus) — الفتحة الظاهرة على الياء (I'rab Lafdzi)",
+      label: "Fathah Zahirah (Manqus) — الفتحة الظاهرة على الياء",
       arabic: 'الْفَتْحَةُ الظَّاهِرَةُ عَلَى الْيَاءِ',
-      shortArabic: 'بِالْفَتْحَةِ',
+      shortArabic: 'بِالْفَتْحَةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       reasons: ['isim_manqus'],
     },
     {
       value: 'fathah_muqaddarah_maqshur',
-      label: "Fathah Muqaddarah (Maqshur) — المقدرة على الألف (I'rab Taqdiri - Ta'azzur)",
+      label: "Fathah Muqaddarah (Maqshur) — المقدرة على الألف (Ta'azzur)",
       arabic: 'الْفَتْحَةُ الْمُقَدَّرَةُ عَلَى الْأَلِفِ مَنَعَ مِنْ ظُهُورِهَا التَّعَذُّرُ',
       shortArabic: 'بِالْفَتْحَةِ الْمُقَدَّرَةِ',
       signCategory: 'muqaddarah',
@@ -238,7 +239,7 @@ export const signsByIrab = {
     },
     {
       value: 'fathah_muqaddarah_munasabah',
-      label: "Fathah Muqaddarah (Munasabah) — المقدرة للمناسبة (I'rab Taqdiri - Munasabah)",
+      label: "Fathah Muqaddarah (Munasabah) — المقدرة للمناسبة",
       arabic: 'الْفَتْحَةُ الْمُقَدَّرَةُ عَلَى مَا قَبْلَ الْيَاءِ مَنَعَ مِنْ ظُهُورِهَا اشْتِغَالُ الْمَحَلِّ بِحَرَكَةِ الْمُنَاسَبَةِ',
       shortArabic: 'بِالْفَتْحَةِ الْمُقَدَّرَةِ',
       signCategory: 'muqaddarah',
@@ -258,7 +259,7 @@ export const signsByIrab = {
     {
       value: 'ya_mutsanna',
       label: "Ya' (Niyabah) — Mutsanna",
-      arabic: 'الْيَاءُ نِيَابَةً عَنِ الْفَتْحَةِ',
+      arabic: 'الْيَاءُ الْمَفْتُوحُ مَا قَبْلَهَا وَالْمَكْسُورُ مَا بَعْدَهَا نِيَابَةً عَنِ الْفَتْحَةِ',
       shortArabic: 'بِالْيَاءِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -267,7 +268,7 @@ export const signsByIrab = {
     {
       value: 'ya_jms',
       label: "Ya' (Niyabah) — Jama' Mudzakkar Salim",
-      arabic: 'الْيَاءُ نِيَابَةً عَنِ الْفَتْحَةِ',
+      arabic: 'الْيَاءُ الْمَكْسُورُ مَا قَبْلَهَا وَالْمَفْتُوحُ مَا بَعْدَهَا نِيَابَةً عَنِ الْفَتْحَةِ',
       shortArabic: 'بِالْيَاءِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -295,18 +296,18 @@ export const signsByIrab = {
   jar: [
     {
       value: 'kasrah_zahirah',
-      label: "Kasrah Zahirah — الكسرة الظاهرة (Isim Mufrad / Jama' Taksir)",
-      arabic: 'الْكَسْرَةُ الظَّاهِرَةُ عَلَى آخِرِهِ',
-      shortArabic: 'بِالْكَسْرَةِ',
+      label: "Kasrah Zahirah — كسرة ظاهرة في آخره",
+      arabic: 'كَسْرَةٌ ظَاهِرَةٌ فِي آخِرِهِ',
+      shortArabic: 'بِالْكَسْرَةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       reasons: ['isim_mufrad', 'jama_taksir'],
     },
     {
       value: 'kasrah_zahirah_jmans',
-      label: "Kasrah Zahirah — الكسرة الظاهرة (Jama' Muannats Salim)",
-      arabic: 'الْكَسْرَةُ الظَّاهِرَةُ عَلَى آخِرِهَا',
-      shortArabic: 'بِالْكَسْرَةِ',
+      label: "Kasrah Zahirah — كسرة ظاهرة في آخرها (Jama' Muannats)",
+      arabic: 'كَسْرَةٌ ظَاهِرَةٌ فِي آخِرِهَا',
+      shortArabic: 'بِالْكَسْرَةِ الظَّاهِرَةِ',
       signCategory: 'zahirah',
       isFarIyyah: false,
       harakatOverride: 'جَرِّهَا',
@@ -314,7 +315,7 @@ export const signsByIrab = {
     },
     {
       value: 'kasrah_muqaddarah_maqshur',
-      label: "Kasrah Muqaddarah (Maqshur) — المقدرة على الألف (I'rab Taqdiri - Ta'azzur)",
+      label: "Kasrah Muqaddarah (Maqshur) — المقدرة على الألف (Ta'azzur)",
       arabic: 'الْكَسْرَةُ الْمُقَدَّرَةُ عَلَى الْأَلِفِ مَنَعَ مِنْ ظُهُورِهَا التَّعَذُّرُ',
       shortArabic: 'بِالْكَسْرَةِ الْمُقَدَّرَةِ',
       signCategory: 'muqaddarah',
@@ -323,7 +324,7 @@ export const signsByIrab = {
     },
     {
       value: 'kasrah_muqaddarah_manqus',
-      label: "Kasrah Muqaddarah (Manqus) — المقدرة على الياء (I'rab Taqdiri - Thiql)",
+      label: "Kasrah Muqaddarah (Manqus) — المقدرة على الياء (Thiql)",
       arabic: 'الْكَسْرَةُ الْمُقَدَّرَةُ عَلَى الْيَاءِ مَنَعَ مِنْ ظُهُورِهَا الثِّقَلُ',
       shortArabic: 'بِالْكَسْرَةِ الْمُقَدَّرَةِ',
       signCategory: 'muqaddarah',
@@ -332,7 +333,7 @@ export const signsByIrab = {
     },
     {
       value: 'kasrah_muqaddarah_munasabah',
-      label: "Kasrah Muqaddarah (Munasabah) — المقدرة للمناسبة (I'rab Taqdiri - Munasabah)",
+      label: "Kasrah Muqaddarah (Munasabah) — المقدرة للمناسبة",
       arabic: 'الْكَسْرَةُ الْمُقَدَّرَةُ عَلَى مَا قَبْلَ الْيَاءِ مَنَعَ مِنْ ظُهُورِهَا اشْتِغَالُ الْمَحَلِّ بِحَرَكَةِ الْمُنَاسَبَةِ',
       shortArabic: 'بِالْكَسْرَةِ الْمُقَدَّرَةِ',
       signCategory: 'muqaddarah',
@@ -342,7 +343,7 @@ export const signsByIrab = {
     {
       value: 'ya_mutsanna_jar',
       label: "Ya' (Niyabah) — Mutsanna",
-      arabic: 'الْيَاءُ نِيَابَةً عَنِ الْكَسْرَةِ',
+      arabic: 'الْيَاءُ الْمَفْتُوحُ مَا قَبْلَهَا وَالْمَكْسُورُ مَا بَعْدَهَا نِيَابَةً عَنِ الْكَسْرَةِ',
       shortArabic: 'بِالْيَاءِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -351,7 +352,7 @@ export const signsByIrab = {
     {
       value: 'ya_jms_jar',
       label: "Ya' (Niyabah) — Jama' Mudzakkar Salim",
-      arabic: 'الْيَاءُ نِيَابَةً عَنِ الْكَسْرَةِ',
+      arabic: 'الْيَاءُ الْمَكْسُورُ مَا قَبْلَهَا وَالْمَفْتُوحُ مَا بَعْدَهَا نِيَابَةً عَنِ الْكَسْرَةِ',
       shortArabic: 'بِالْيَاءِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -368,7 +369,7 @@ export const signsByIrab = {
     },
     {
       value: 'fathah_ghairu_munsharif_jar',
-      label: "Fathah (Niyabah) — Ghairu Munsharif — الفتحة نيابةً عن الكسرة",
+      label: "Fathah (Niyabah) — Ghairu Munsharif — الفتحة نيابة عن الكسرة",
       arabic: 'الْفَتْحَةُ نِيَابَةً عَنِ الْكَسْرَةِ',
       shortArabic: 'بِالْفَتْحَةِ',
       signCategory: 'niyabah',
@@ -389,7 +390,7 @@ export const signsByIrab = {
     {
       value: 'hadzf_illah',
       label: "Hadzf Harfil Illah — حذف حرف العلة",
-      arabic: 'حَذْفُ حَرْفِ الْعِلَّةِ',
+      arabic: 'حَذْفُ حَرْفِ الْعِلَّةِ نِيَابَةً عَنِ السُّكُونِ',
       shortArabic: 'بِحَذْفِ حَرْفِ الْعِلَّةِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -398,7 +399,7 @@ export const signsByIrab = {
     {
       value: 'hadzf_nun_jazm',
       label: "Hadzfun Nun — Af'alul Khamsah",
-      arabic: 'حَذْفُ النُّونِ',
+      arabic: 'حَذْفُ النُّونِ نِيَابَةً عَنِ السُّكُونِ',
       shortArabic: 'بِحَذْفِ النُّونِ',
       signCategory: 'niyabah',
       isFarIyyah: true,
@@ -407,39 +408,37 @@ export const signsByIrab = {
   ],
 };
 
-// ─── Alasan / Sebab Tanda ─────────────────────────────────────────────────────
-// Terkait I'rab Taqdiri:
-//   Ta'azzur  (التعذر)   → Isim Maqshur  — alif tidak bisa berharakat sama sekali
-//   Thiql     (الثقل)    → Isim Manqus   — ya' berat menerima dhammah/kasrah; fathah ZAHIRAH
-//   Munasabah (المناسبة) → Mudhaf ke ya' mutakallim — harakat terhalang keserasian dengan ya'
+// ─── Alasan / Sebab Tanda ('Illah Turats) ─────────────────────────────────────
 export const reasons = {
   isim_mufrad:             { label: 'Isim Mufrad',                           arabic: 'لِأَنَّهُ اسْمٌ مُفْرَدٌ' },
   jama_taksir:             { label: "Jama' Taksir",                          arabic: 'لِأَنَّهُ جَمْعُ تَكْسِيرٍ' },
   jama_muannats_salim:     { label: "Jama' Muannats Salim",                  arabic: 'لِأَنَّهُ جَمْعٌ مُؤَنَّثٌ سَالِمٌ' },
-  jama_mudzakkar_salim:    { label: "Jama' Mudzakkar Salim",                 arabic: 'لِأَنَّهُ جَمْعٌ مُذَكَّرٌ سَالِمٌ' },
-  mutsanna:                { label: 'Isim Mutsanna',                          arabic: 'لِأَنَّهُ مُثَنًّى' },
+  jama_mudzakkar_salim:    { label: "Jama' Mudzakkar Salim",                 arabic: 'لِأَنَّهُ جَمْعُ مُذَكَّرٍ سَالِمٌ، وَالنُّونُ عِوَضٌ عَنِ التَّنْوِينِ فِي الِاسْمِ الْمُفْرَدِ' },
+  mutsanna:                { label: 'Isim Mutsanna',                          arabic: 'لِأَنَّهُ مُثَنًّى، وَالنُّونُ عِوَضٌ عَنِ التَّنْوِينِ فِي الِاسْمِ الْمُفْرَدِ' },
   isim_maqshur:            { label: 'Isim Maqshur (berakhir alif lazimah)',   arabic: 'لِأَنَّهُ اسْمٌ مَقْصُورٌ' },
   isim_manqus:             { label: 'Isim Manqus (berakhir ya lazimah)',      arabic: 'لِأَنَّهُ اسْمٌ مَنْقُوصٌ' },
-  asmaul_khamsah:          { label: "Asmaul Khamsah (أب أخ حم فو ذو)",       arabic: 'لِأَنَّهُ مِنَ الْأَسْمَاءِ الْخَمْسَةِ' },
+  asmaul_khamsah:          { label: "Asmaul Khamsah (أب أخ حم فو ذو)",       arabic: 'لِأَنَّهُ مِنَ الْأَسْمَاءِ الْخَمْسَةِ وَهُوَ مُضَافٌ' },
   ghairu_munsharif:        { label: "Isim Ghairu Munsharif / Diptote (لا ينصرف)", arabic: 'لِأَنَّهُ اسْمٌ لَا يَنْصَرِفُ' },
   afalul_khamsah:          { label: "Af'alul Khamsah",                        arabic: 'لِأَنَّهُ مِنَ الْأَفْعَالِ الْخَمْسَةِ' },
   fiil_mudhari_shahih:     { label: "Fi'il Mudhari' Shahih Akhir",            arabic: 'لِأَنَّهُ فِعْلٌ مُضَارِعٌ صَحِيحُ الْآخِرِ وَلَمْ يَتَّصِلْ بِآخِرِهِ شَيْءٌ' },
   fiil_mudhari_mutal:      { label: "Fi'il Mudhari' Mu'tal Akhir",            arabic: 'لِأَنَّهُ فِعْلٌ مُضَارِعٌ مُعْتَلُّ الْآخِرِ' },
-  mutassil_ya_mutakallim:  { label: "Mudhaf ke Ya' Mutakallim (كالمعرّب والمضاف إلى ياء المتكلم)", arabic: 'لِاشْتِغَالِ الْمَحَلِّ بِحَرَكَةِ الْمُنَاسَبَةِ' },
+  mutassil_ya_mutakallim:  { label: "Mudhaf ke Ya' Mutakallim (المضاف إلى ياء المتكلم)", arabic: 'لِاشْتِغَالِ الْمَحَلِّ بِحَرَكَةِ الْمُنَاسَبَةِ' },
 };
 
 // ─── Sub-pilihan Mabni Fi'il Madhi ───────────────────────────────────────────
 export const fiilMadhiMabniOptions = [
-  { value: 'fathah_madhi',      arabic: 'الْفَتْحِ',   label: "Fathah — asal (فعل + _)",        hint: "Contoh: كَتَبَ، ذَهَبَ" },
-  { value: 'sukun_ta_fail',     arabic: 'السُّكُونِ',  label: "Sukun — bersambung Ta' Fa'il",   hint: "Contoh: كَتَبْتَ، ذَهَبْتُ" },
-  { value: 'sukun_na_fail',     arabic: 'السُّكُونِ',  label: "Sukun — bersambung Na Fa'il",    hint: "Contoh: كَتَبْنَا" },
-  { value: 'dhammah_wauw_jama', arabic: 'الضَّمِّ',    label: "Dhammah — bersambung Waw Jama'", hint: "Contoh: كَتَبُوا" },
+  { value: 'fathah_madhi',      arabic: 'الْفَتْحِ الظَّاهِرِ فِي آخِرِهِ',   label: "Fathah Zahir — asal (فعل + _)",        hint: "Contoh: كَتَبَ، ذَهَبَ" },
+  { value: 'fathah_muqaddarah',  arabic: 'الْفَتْحِ الْمُقَدَّرِ عَلَى الْأَلِفِ لِلتَّعَذُّرِ', label: "Fathah Muqaddarah — mu'tal alif", hint: "Contoh: دَعَا، رَمَى" },
+  { value: 'sukun_ta_fail',     arabic: 'السُّكُونِ لِاتِّصَالِهِ بِضَمِيرِ رَفْعٍ مُتَحَرِّكٍ',  label: "Sukun — bersambung Ta' / Dhomir Fa'il",   hint: "Contoh: كَتَبْتَ، كَتَبْتُ" },
+  { value: 'sukun_na_fail',     arabic: 'السُّكُونِ لِاتِّصَالِهِ بِنَا الْفَاعِلِينَ',    label: "Sukun — bersambung Na Fa'il",    hint: "Contoh: كَتَبْنَا" },
+  { value: 'sukun_nun_niswah',  arabic: 'السُّكُونِ لِاتِّصَالِهِ بِنُونِ النِّسْوَةِ',    label: "Sukun — bersambung Nun Niswah",  hint: "Contoh: كَتَبْنَ" },
+  { value: 'dhammah_wauw_jama', arabic: 'الضَّمِّ لِاتِّصَالِهِ بِوَاوِ الْجَمَاعَةِ',    label: "Dhammah — bersambung Waw Jama'", hint: "Contoh: كَتَبُوا" },
 ];
 
 // ─── Sub-pilihan Mabni Fi'il Amr ─────────────────────────────────────────────
 export const fiilAmrMabniOptions = [
-  { value: 'sukun_amr',          arabic: 'السُّكُونِ',              label: "Sukun — shahih akhir",          hint: "Contoh: اكْتُبْ، اذْهَبْ" },
-  { value: 'hadzf_nun_amr',      arabic: 'حَذْفِ النُّونِ',          label: "Hadzfun Nun — Af'alul Khamsah", hint: "Contoh: اكْتُبُوا، اكْتُبِي" },
-  { value: 'hadzf_illah_amr',    arabic: 'حَذْفِ حَرْفِ الْعِلَّةِ', label: "Hadzf Harfil Illah — mu'tal",   hint: "Contoh: ادْعُ، ارْمِ، اخْشَ" },
-  { value: 'fathah_amr_muakkad', arabic: 'الْفَتْحِ',               label: "Fathah — bersambung Nun Taukid", hint: "Contoh: اكْتُبَنَّ" },
+  { value: 'sukun_amr',          arabic: 'السُّكُونِ الظَّاهِرِ فِي آخِرِهِ',       label: "Sukun — shahih akhir",          hint: "Contoh: اكْتُبْ، اذْهَبْ" },
+  { value: 'hadzf_nun_amr',      arabic: 'حَذْفِ النُّونِ لِأَنَّ مُضَارِعَهُ مِنَ الْأَفْعَالِ الْخَمْسَةِ', label: "Hadzfun Nun — Af'alul Khamsah", hint: "Contoh: اكْتُبُوا، اكْتُبَا، اكْتُبِي" },
+  { value: 'hadzf_illah_amr',    arabic: 'حَذْفِ حَرْفِ الْعِلَّةِ مِنْ آخِرِهِ',    label: "Hadzf Harfil Illah — mu'tal",   hint: "Contoh: ادْعُ، ارْمِ، اخْشَ" },
+  { value: 'fathah_amr_muakkad', arabic: 'الْفَتْحِ لِاتِّصَالِهِ بِنُونِ التَّوْكِيدِ', label: "Fathah — bersambung Nun Taukid", hint: "Contoh: اكْتُبَنَّ" },
 ];

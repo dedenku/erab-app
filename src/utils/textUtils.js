@@ -10,7 +10,7 @@ export function buildCompact(resultText) {
   if (!resultText) return null;
   let text = resultText;
 
-  // Helper untuk menyesuaikan harakat tanda (Dhammah -> Dhammati) jika didahului "bi-"
+  // Helper untuk menyesuaikan harakat tanda (Dhammah -> Dhammati) jika didahului "bi-" pada mu'rab
   const fixMajrurSign = (match, p1) => {
     const adjustedSign = p1.replace(/\u064F(?=\s|$)/g, '\u0650');
     return 'بِـ' + adjustedSign;
@@ -35,9 +35,7 @@ export function buildCompact(resultText) {
   text = text.replace(/وَعَلَامَةُ (?:رَفْعِهِ|نَصْبِهِ|جَرِّهِ|جَزْمِهِ) ([\u0600-\u06FF\s]+?)(?= لِأَنَّهُ| مَنَعَ| \.)/g, fixMajrurSign);
   text = text.replace(/وعلامة (?:رفعه|نصبه|جره|جزمه) ([\u0600-\u06FF\s]+?)(?= لأنه| منع| \.)/g, fixMajrurPlain);
 
-  // 2. Handle Mabni: مَبْنِيٌّ عَلَى -> بـ
-  text = text.replace(/ مَبْنِيٌّ عَلَى ([\u0600-\u06FF\s]+?)(?= لَا مَحَلَّ| فِي مَحَلِّ| \.)/g, ' مَبْنِيٌّ بِـ$1');
-  text = text.replace(/ مبني على ([\u0600-\u06FF\s]+?)(?= لا محل| في محل| \.)/g, ' مبني بـ$1');
+  // 2. Mabni TETAP menggunakan "مَبْنِيٌّ عَلَى" (tidak diubah ke "بـ" karena mabni berpasangan dengan 'ala)
 
   // 3. Remove excess clauses
   text = text.replace(/ (لِأَنَّهُ|نِيَابَةً|مَنَعَ)[^.]+\./g, '.');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Copy, RotateCcw, BookOpen, Clock } from 'lucide-react';
+import { Copy, RotateCcw, BookOpen, Clock, Check } from 'lucide-react';
 import { clsx } from 'clsx';
 import { templateCategories, manualTemplates } from '../data/manualTemplates';
 
@@ -18,7 +18,7 @@ function saveHistory(items) {
 }
 
 export default function ManualEditor() {
-  const [selectedCategory, setSelectedCategory] = useState('isim_khusus');
+  const [selectedCategory, setSelectedCategory] = useState(templateCategories[0]?.value || 'basmalah_hamdalah');
   const [editText, setEditText] = useState('');
   const [copied, setCopied] = useState(false);
   const [showHistory, setShowHistory] = useState(false);

@@ -1,7 +1,7 @@
-import { reasons } from '../data/irabData';
+import { reasons } from '../data/irabData.js';
 
 /**
- * Helper untuk menambahkan prefiks "bi-" (بِـ) secara alami pada kata Arab.
+ * Helper untuk menambahkan prefiks "bi-" (بِـ) secara alami pada kata Arab mu'rab.
  * misal: "الْفَتْحِ" -> "بِالْفَتْحِ", "حَذْفِ" -> "بِحَذْفِ"
  */
 function toBiPrefix(arabicText) {
@@ -15,9 +15,13 @@ function toBiPrefix(arabicText) {
 export function buildIsimMurabText(kedudukan, irabType, sign, reason, mode = 'formal', depth = 'full') {
   if (!kedudukan || !irabType || !sign || !reason) return null;
 
+  // Tangani kasus peran majrur agar tidak terjadi duplikasi "مَجْرُورٌ مَجْرُورٌ"
+  const roleText = kedudukan.value === 'majrur_jar' || kedudukan.arabic === 'مَجْرُورٌ' ? 'اسْمٌ' : kedudukan.arabic;
+  const baseTitle = `${roleText} ${irabType.arabic}`;
+
   // Short depth: Peran + Status
   if (depth === 'short') {
-    return `${kedudukan.arabic} ${irabType.arabic}.`;
+    return `${baseTitle}.`;
   }
 
   const harakat = sign.harakatOverride ?? irabType.harakat;
@@ -28,14 +32,15 @@ export function buildIsimMurabText(kedudukan, irabType, sign, reason, mode = 'fo
   if (depth === 'medium') {
     const signText = sign.shortArabic ?? toBiPrefix(sign.arabic);
     return shouldShowReason
-      ? `${kedudukan.arabic} ${irabType.arabic} ${signText} ${rsn}.`
-      : `${kedudukan.arabic} ${irabType.arabic} ${signText}.`;
+      ? `${baseTitle} ${signText} ${rsn}.`
+      : `${baseTitle} ${signText}.`;
   }
 
-  // Full depth
-  return shouldShowReason
-    ? `${kedudukan.arabic} ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic} ${rsn}.`
-    : `${kedudukan.arabic} ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic}.`;
+  // Full depth: standar kitab Az-Zinah & Al-Madkhal
+  const amilPart = kedudukan.amilArabic ? ` ${kedudukan.amilArabic}` : '';
+  const reasonPart = shouldShowReason ? ` ${rsn}` : '';
+
+  return `${baseTitle}${amilPart} وَعَلَامَةُ ${harakat} ${sign.arabic}${reasonPart}.`;
 }
 
 export function buildIsimMabniText(jenisMabni, mabniSign, mahal, mode = 'formal', depth = 'full') {
@@ -50,11 +55,10 @@ export function buildIsimMabniText(jenisMabni, mabniSign, mahal, mode = 'formal'
   }
 
   if (depth === 'medium') {
-    const mabniBi = toBiPrefix(mabniSign.arabic);
     if (la_mahal) {
-      return `${jenisMabni.arabic} مَبْنِيٌّ ${mabniBi} لَا مَحَلَّ لَهُ.`;
+      return `${jenisMabni.arabic} مَبْنِيٌّ عَلَى ${mabniSign.arabic} لَا مَحَلَّ لَهُ.`;
     }
-    return `${jenisMabni.arabic} مَبْنِيٌّ ${mabniBi} ${mahal.arabic}.`;
+    return `${jenisMabni.arabic} مَبْنِيٌّ عَلَى ${mabniSign.arabic} ${mahal.arabic}.`;
   }
 
   // Full depth
@@ -67,14 +71,14 @@ export function buildIsimMabniText(jenisMabni, mabniSign, mahal, mode = 'formal'
 export function buildFiilMadhiText(mabniSign, mode = 'formal', depth = 'full') {
   if (!mabniSign) return null;
   if (depth === 'short') return `فِعْلٌ مَاضٍ.`;
-  if (depth === 'medium') return `فِعْلٌ مَاضٍ مَبْنِيٌّ ${toBiPrefix(mabniSign.arabic)}.`;
+  if (depth === 'medium') return `فِعْلٌ مَاضٍ مَبْنِيٌّ عَلَى ${mabniSign.arabic}.`;
   return `فِعْلٌ مَاضٍ مَبْنِيٌّ عَلَى ${mabniSign.arabic}.`;
 }
 
 export function buildFiilAmrText(mabniSign, mode = 'formal', depth = 'full') {
   if (!mabniSign) return null;
   if (depth === 'short') return `فِعْلُ أَمْرٍ.`;
-  if (depth === 'medium') return `فِعْلُ أَمْرٍ مَبْنِيٌّ ${toBiPrefix(mabniSign.arabic)}.`;
+  if (depth === 'medium') return `فِعْلُ أَمْرٍ مَبْنِيٌّ عَلَى ${mabniSign.arabic}.`;
   return `فِعْلُ أَمْرٍ مَبْنِيٌّ عَلَى ${mabniSign.arabic}.`;
 }
 
@@ -97,10 +101,11 @@ export function buildFiilMudhariText(irabType, sign, reason, mode = 'formal', de
       : `فِعْلٌ مُضَارِعٌ ${irabType.arabic} ${signText}.`;
   }
 
-  // Full depth
-  return shouldShowReason
-    ? `فِعْلٌ مُضَارِعٌ ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic} ${rsn}.`
-    : `فِعْلٌ مُضَارِعٌ ${irabType.arabic} وَعَلَامَةُ ${harakat} ${sign.arabic}.`;
+  // Full depth: standar kitab Az-Zinah & Al-Madkhal
+  const tajarrudPart = irabType.value === 'rafa' ? ' لِتَجَرُّدِهِ عَنِ النَّاصِبِ وَالْجَازِمِ' : '';
+  const reasonPart = shouldShowReason ? ` ${rsn}` : '';
+
+  return `فِعْلٌ مُضَارِعٌ ${irabType.arabic}${tajarrudPart} وَعَلَامَةُ ${harakat} ${sign.arabic}${reasonPart}.`;
 }
 
 export function buildHurufText(category, mabniSign, mode = 'formal', depth = 'full') {
@@ -111,9 +116,8 @@ export function buildHurufText(category, mabniSign, mode = 'formal', depth = 'fu
   }
 
   if (depth === 'medium') {
-    return `حَرْفُ ${category.arabic} مَبْنِيٌّ ${toBiPrefix(mabniSign.arabic)}.`;
+    return `حَرْفُ ${category.arabic} مَبْنِيٌّ عَلَى ${mabniSign.arabic}.`;
   }
 
   return `حَرْفُ ${category.arabic} مَبْنِيٌّ عَلَى ${mabniSign.arabic} لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ.`;
 }
-
