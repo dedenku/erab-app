@@ -62,7 +62,7 @@ export default function IrabBuilder({ onBookmark }) {
       if (kedudukan.irab === 'all') return [irabTypes.rafa, irabTypes.nashab, irabTypes.jar];
       return kedudukan.irab ? [irabTypes[kedudukan.irab]] : [];
     }
-    if (wordType?.value === 'fiil' && category?.value === 'mudhari') {
+    if (wordType?.value === 'fiil' && (category?.value === 'mudhari' || category?.value === 'mudhari_majhul')) {
       return [irabTypes.rafa, irabTypes.nashab, irabTypes.jazm];
     }
     return [];
@@ -79,7 +79,7 @@ export default function IrabBuilder({ onBookmark }) {
   }, [sign]);
 
   const mabniOptions = useMemo(() => {
-    if (wordType?.value === 'fiil' && category?.value === 'madhi') return fiilMadhiMabniOptions;
+    if (wordType?.value === 'fiil' && (category?.value === 'madhi' || category?.value === 'madhi_majhul')) return fiilMadhiMabniOptions;
     if (wordType?.value === 'fiil' && category?.value === 'amr')   return fiilAmrMabniOptions;
     return mabniSigns;
   }, [wordType, category]);
@@ -141,9 +141,9 @@ export default function IrabBuilder({ onBookmark }) {
         body = buildIsimMabniText(kedudukan, mabniSign, mahal, explanationMode, depth);
       }
     } else if (wordType?.value === 'fiil') {
-      if (category?.value === 'madhi') body = buildFiilMadhiText(mabniSign, explanationMode, depth);
+      if (category?.value === 'madhi' || category?.value === 'madhi_majhul') body = buildFiilMadhiText(category.value, mabniSign, explanationMode, depth);
       else if (category?.value === 'amr')  body = buildFiilAmrText(mabniSign, explanationMode, depth);
-      else if (category?.value === 'mudhari') body = buildFiilMudhariText(irabType, sign, reason, explanationMode, depth);
+      else if (category?.value === 'mudhari' || category?.value === 'mudhari_majhul') body = buildFiilMudhariText(category.value, irabType, sign, reason, explanationMode, depth);
     } else if (wordType?.value === 'huruf') {
       body = buildHurufText(category, mabniSign, explanationMode, depth);
     }
@@ -161,11 +161,11 @@ export default function IrabBuilder({ onBookmark }) {
 
   const showMabniSign =
     (wordType?.value === 'isim' && category?.value === 'mabni' && kedudukan) ||
-    (wordType?.value === 'fiil' && (category?.value === 'madhi' || category?.value === 'amr')) ||
+    (wordType?.value === 'fiil' && (category?.value === 'madhi' || category?.value === 'madhi_majhul' || category?.value === 'amr')) ||
     (wordType?.value === 'huruf' && category);
   const showMahal = wordType?.value === 'isim' && category?.value === 'mabni' && mabniSign;
 
-  const showFiilMudhariSigns = wordType?.value === 'fiil' && category?.value === 'mudhari';
+  const showFiilMudhariSigns = wordType?.value === 'fiil' && (category?.value === 'mudhari' || category?.value === 'mudhari_majhul');
 
   return (
     <div className="w-full">

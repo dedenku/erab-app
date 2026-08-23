@@ -240,6 +240,13 @@ export const manualTemplates = [
     text: 'مَجْرُورٌ بِحَرْفِ الْجَرِّ وَعَلَامَةُ جَرِّهِ الْفَتْحَةُ نِيَابَةً عَنِ الْكَسْرَةِ لِأَنَّهُ اسْمٌ لَا يَنْصَرِفُ وَالْمَانِعُ لَهُ مِنَ الصَّرْفِ عِلَّتَانِ / صِيغَةُ مُنْتَهَى الْجُمُوعِ.',
   },
   {
+    id: 'ghairu_munsharif_berbagai_illah',
+    category: 'isim_khusus',
+    title: "Ghairu Munsharif 2 'Illah (أَحْمَدَ، عُمَرَ)",
+    hint: "Contoh rincian 2 'Illah (Alamiyyah + Wazn/Udul)",
+    text: 'مَجْرُورٌ بِحَرْفِ الْجَرِّ وَعَلَامَةُ جَرِّهِ الْفَتْحَةُ نِيَابَةً عَنِ الْكَسْرَةِ لِأَنَّهُ اسْمٌ لَا يَنْصَرِفُ لِلْعَلَمِيَّةِ وَوَزْنِ الْفِعْلِ / لِلْعَلَمِيَّةِ وَالْعُدُولِ.',
+  },
+  {
     id: 'isim_mutsanna_lengkap',
     category: 'isim_khusus',
     title: "Isim Mutsanna — Rumus Lengkap Kitab Kuning",
@@ -252,6 +259,13 @@ export const manualTemplates = [
     title: "Jama' Mudzakkar Salim — Rumus Lengkap Kitab Kuning",
     hint: "Dengan rincian 'iwadh tanwin",
     text: 'فَاعِلٌ مَرْفُوعٌ بِفِعْلِهِ وَعَلَامَةُ رَفْعِهِ الْوَاوُ نِيَابَةً عَنِ الضَّمَّةِ لِأَنَّهُ جَمْعُ مُذَكَّرٍ سَالِمٌ، وَالنُّونُ عِوَضٌ عَنِ التَّنْوِينِ فِي الِاسْمِ الْمُفْرَدِ.',
+  },
+  {
+    id: 'mutsanna_jms_mudhaf',
+    category: 'isim_khusus',
+    title: "Mutsanna / JMS sebagai Mudhaf (غُلَامَا زَيْدٍ / مُسْلِمُو مَكَّةَ)",
+    hint: "Pembuangan Nun karena Idhafah",
+    text: 'فَاعِلٌ مَرْفُوعٌ بِفِعْلِهِ وَعَلَامَةُ رَفْعِهِ الْأَلِفُ / الْوَاوُ لِأَنَّهُ مُثَنًّى / جَمْعُ مُذَكَّرٍ سَالِمٌ، وَالنُّونُ مَحْذُوفَةٌ لِلْإِضَافَةِ عِوَضٌ عَنِ التَّنْوِينِ فِي الِاسْمِ الْمُفْرَدِ، وَهُوَ مُضَافٌ.',
   },
   {
     id: 'asmaul_khamsah_lengkap',
@@ -291,6 +305,13 @@ export const manualTemplates = [
     title: "Fi'il Madhi + Ta' Fa'il (كَتَبْتُ / رَأَيْتُ)",
     hint: "Mabni 'ala sukun litti-shalihi bi dhamir raf'in mutaharrik",
     text: 'فِعْلٌ مَاضٍ مَبْنِيٌّ عَلَى السُّكُونِ لِاتِّصَالِهِ بِضَمِيرِ رَفْعٍ مُتَحَرِّكٍ، وَالتَّاءُ ضَمِيرٌ بَارِزٌ مُتَّصِلٌ مَبْنِيٌّ عَلَى الضَّمِّ فِي مَحَلِّ رَفْعٍ فَاعِلٌ.',
+  },
+  {
+    id: 'fiil_madhi_majhul',
+    category: 'fiil_khusus',
+    title: "Fi'il Madhi Majhul (ضُرِبَ)",
+    hint: "Mabni lima lam yusamma fa'iluh",
+    text: 'فِعْلٌ مَاضٍ مَبْنِيٌّ لِمَا لَمْ يُسَمَّ فَاعِلُهُ مَبْنِيٌّ عَلَى الْفَتْحِ الظَّاهِرِ فِي آخِرِهِ، ضُمَّ أَوَّلُهُ وَكُسِرَ مَا قَبْلَ آخِرِهِ.',
   },
   {
     id: 'fiil_mudhari_afal_khamsah',
